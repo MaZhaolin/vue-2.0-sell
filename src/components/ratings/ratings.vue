@@ -106,9 +106,15 @@
       },
       contentToggle (onlyContent) {
         this.onlyContent = onlyContent
+        this.$nextTick(() => {
+          this.scroll.refresh()
+        })
       },
       ratingTypeSelect (selectType) {
         this.selectType = selectType
+        this.$nextTick(() => {
+          this.scroll.refresh()
+        })
       }
     },
     components: {
@@ -233,6 +239,7 @@
             border: 1px solid rgba(7, 17, 27, .1)
             border-radius: 1px
             color: rgb(147, 153, 159)
+            margin-bottom:2px
           .icon-thumb_down,.icon-thumb_up
               margin-right: 4px
               line-height: 24px
