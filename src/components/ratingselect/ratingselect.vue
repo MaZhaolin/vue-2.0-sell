@@ -94,6 +94,7 @@
       padding: 18px 0
       margin: 0 18px
       border-1px(rgba(7, 17, 27, .1))
+      font-size: 0
       .block
         display: inline-block
         padding: 8px 12px

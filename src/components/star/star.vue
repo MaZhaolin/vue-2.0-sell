@@ -47,7 +47,7 @@
     .star-item
       display: inline-block
       bacground-repeat: no-repeat;
-    &.star-48
+    &.star-3
       .star-item
         width: 20px
         height: 20px
@@ -61,11 +61,11 @@
           bg-image('star48_half')
         &.off
           bg-image('star48_off')
-    &.star-36
+    &.star-2
       .star-item
         width: 15px
         height: 15px
-        margin-right:  16px
+        margin-right:  6px
         background-size: 15px 15px
         &:last-child
           margin-right: 0
@@ -75,7 +75,7 @@
           bg-image('star36_half')
         &.off
           bg-image('star36_off')
-    &.star-24
+    &.star-1
       .star-item
         width: 10px
         height: 10px
