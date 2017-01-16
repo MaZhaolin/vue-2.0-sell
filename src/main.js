@@ -15,6 +15,7 @@ Vue.use(VueResource)
 Vue.extend(App)
 
 const routes = [
+  {path: '/', component: goods},
   {path: '/goods', component: goods},
   {path: '/ratings', component: ratings},
   {path: '/seller', component: seller}
@@ -29,3 +30,4 @@ new Vue({
   router: router,
   render: h => h(App)
 }).$mount('#app')
+
