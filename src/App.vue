@@ -18,8 +18,9 @@
 
 <script>
 import header from './components/header/header'
+import wilddog from 'wilddog'
 
-const ERR_OK = 0
+// const ERR_OK = 0
 
 export default{
   data () {
@@ -28,12 +29,24 @@ export default{
     }
   },
   created () {
-    this.$http.get('/api/seller').then((response) => {
-      response = response.body
-      if (response.errno === ERR_OK) {
-        this.seller = response.data
-      }
+    let config = {
+      syncURL: 'https://ins.wilddogio.com'
+    }
+    wilddog.initializeApp(config)
+    let ref = wilddog.sync().ref('seller')
+    ref.once('value').then((snapshot) => {
+      this.seller = snapshot.val()
+    }).catch((err) => {
+      console.error(err)
     })
+
+    // 使用本地data.json 数据
+    // this.$http.get('/api/seller').then((response) => {
+    //   response = response.body
+    //   if (response.errno === ERR_OK) {
+    //     this.seller = response.data
+    //   }
+    // })
   },
   components: {
     'v-header': header

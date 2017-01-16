@@ -13,7 +13,8 @@
     "better-scroll": "^0.1.10",
     "vue": "^2.1.0",
     "vue-resource": "^1.0.3",
-    "vue-router": "^2.1.1"
+    "vue-router": "^2.1.1",
+    "wilddog": "^2.4.3"
   },
   "devDependencies": {
     "stylus": "^0.54.5",

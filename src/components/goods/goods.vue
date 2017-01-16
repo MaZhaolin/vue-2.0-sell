@@ -47,8 +47,9 @@
   import cartcontrol from 'components/cartcontrol/cartcontrol'
   import food from 'components/food/food'
   import BScroll from 'better-scroll'
+  import wilddog from 'wilddog'
 
-  const ERR_OK = 0
+  // const ERR_OK = 0
   export default {
     props: {
       seller: {
@@ -87,16 +88,31 @@
       }
     },
     created () {
-      this.$http.get('/api/goods').then((response) => {
-        response = response.body
-        if (response.errno === ERR_OK) {
-          this.goods = response.data
-          this.$nextTick(() => {
-            this._initScroll()
-            this._calculateHeight()
-          })
-        }
+      let config = {
+        syncURL: 'https://ins.wilddogio.com'
+      }
+      wilddog.initializeApp(config)
+      let ref = wilddog.sync().ref('goods')
+      ref.once('value').then((snapshot) => {
+        this.goods = snapshot.val()
+        this.$nextTick(() => {
+          this._initScroll()
+          this._calculateHeight()
+        })
+      }).catch((err) => {
+        console.error(err)
       })
+      // 使用data.json本地数据
+      // this.$http.get('/api/goods').then((response) => {
+      //   response = response.body
+      //   if (response.errno === ERR_OK) {
+      //     this.goods = response.data
+      //     this.$nextTick(() => {
+      //       this._initScroll()
+      //       this._calculateHeight()
+      //     })
+      //   }
+      // })
     },
     methods: {
       _drop (target) {

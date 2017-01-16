@@ -56,9 +56,10 @@
   import ratingselect from 'components/ratingselect/ratingselect'
   import shopcart from 'components/shopcart/shopcart'
   import BScroll from 'better-scroll'
+  import wilddog from 'wilddog'
   import {formatDate} from '../../common/js/date'
 
-  const ERR_OK = 0
+  // const ERR_OK = 0
   // const POSITIVE = 0
   // const NEGATIVE = 1
   const ALL = 2
@@ -77,15 +78,29 @@
       }
     },
     created () {
-      this.$http.get('/api/ratings').then((response) => {
-        response = response.body
-        if (response.errno === ERR_OK) {
-          this.ratings = response.data
-          this.$nextTick(() => {
-            this._initScroll()
-          })
-        }
+      let config = {
+        syncURL: 'https://ins.wilddogio.com'
+      }
+      wilddog.initializeApp(config)
+      let ref = wilddog.sync().ref('ratings')
+      ref.once('value').then((snapshot) => {
+        this.ratings = snapshot.val()
+        this.$nextTick(() => {
+          this._initScroll()
+        })
+      }).catch((err) => {
+        console.error(err)
       })
+      // 使用本地data.json数据
+      // this.$http.get('/api/ratings').then((response) => {
+      //   response = response.body
+      //   if (response.errno === ERR_OK) {
+      //     this.ratings = response.data
+      //     this.$nextTick(() => {
+      //       this._initScroll()
+      //     })
+      //   }
+      // })
     },
     methods: {
       _initScroll () {
