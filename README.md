@@ -1,6 +1,6 @@
-# sell
+# 基于 vue 2.0 饿了么店铺界面
 
-> sell app
+预览地址 [https://insertsweat.github.io/vue-2.0-sell/](https://insertsweat.github.io/vue-2.0-sell/)
 
 ## Build Setup
 
@@ -14,5 +14,3 @@ npm run dev
 # build for production with minification
 npm run build
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
