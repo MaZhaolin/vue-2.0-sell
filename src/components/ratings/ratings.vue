@@ -54,6 +54,7 @@
   import star from 'components/star/star'
   import split from 'components/split/split'
   import ratingselect from 'components/ratingselect/ratingselect'
+  import shopcart from 'components/shopcart/shopcart'
   import BScroll from 'better-scroll'
   import {formatDate} from '../../common/js/date'
 
@@ -120,7 +121,8 @@
     components: {
       star,
       split,
-      ratingselect
+      ratingselect,
+      shopcart
     },
     filters: {
       formatDate (time) {

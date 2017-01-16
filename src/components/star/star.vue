@@ -44,6 +44,7 @@
 <style lang="stylus" rel="stylesheet/stylus">
   @import '../../common/stylus/mixin'
   .star
+    white-space: nowrap
     .star-item
       display: inline-block
       bacground-repeat: no-repeat;
